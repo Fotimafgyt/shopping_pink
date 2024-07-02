@@ -26,8 +26,10 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li onclick="
+                    document.querySelector('.del_modal').style='display:flex;'
+                    " class="nav-item">
+                        <a class="nav-link" href="#">NEW PRODUCT</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -47,7 +49,7 @@
                         <a class="nav-link " aria-disabled="true"
                             onclick="document.querySelector('.cart__modal').style='left:0px;'"><i
                                 style="font-size: 25px;" class='bx bx-cart-alt'></i><sup
-                                style="padding: 0px 4px; background-color: black;color: white;border-radius: 50%;position: relative; top: -13px;left: -5px;">0</sup></a>
+                                style="padding: 0px 4px; background-color: black;color: white;border-radius: 50%;position: relative; top: -13px;left: -5px;" class="count1">0</sup></a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -65,10 +67,28 @@
 
     <div class="cart__modal">
         <div class="cart_close" onclick="document.querySelector('.cart__modal').style='left:-100%'"><i class='bx bx-x'></i></div>
+        <h3 style="position: absolute;top: 0px;left:30px;">CART</h3>
         <div class="cart__modal__body">
 
         </div>
     </div>
+
+ <div class="del_modal">
+    <div class="del_modal_body">
+        <h3>NEW PRODUCTS</h3>
+        <input class="img_inp" type="text" placeholder="image">
+        <input class="title_inp" type="text" placeholder="title">
+        <input class="price_inp" type="text" placeholder="price">
+        <input class="category_inp" type="text" placeholder="category">
+        <div class="two_button_for_modal">
+            <button onclick="
+                document.querySelector('.del_modal').style='display:none'
+                " class="canc">Cancel</button>
+            <button onclick="create()" class="del1">create</button>
+        </div>
+    </div>
+</div> 
+
 
     <script src="data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

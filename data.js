@@ -148,7 +148,7 @@ data=[
     </div>
     <div class="card_product_body">
         <div class="catd_product_title">${item.title}</div>
-        <div class="catd_product_price">${item.price}</div>
+        <div class="catd_product_price">${item.price}$</div>
         <div class="catd_product_category">${item.category}</div>
         <div class="catd_product_button">
             <button onclick="buyitem('${item.image}','${item.title}','${item.price}')"> buy</button>
@@ -170,7 +170,7 @@ if(item.title.includes(input) || item.category.includes(input)){
   </div>
   <div class="card_product_body">
       <div class="catd_product_title">${item.title}</div>
-      <div class="catd_product_price">${item.price}</div>
+      <div class="catd_product_price">${item.price}$</div>
       <div class="catd_product_category">${item.category}</div>
       <div class="catd_product_button">
           <button onclick="buyitem('${item.image}','${item.title}','${item.price}')">buy</button>
@@ -191,24 +191,112 @@ function buyitem(img,title,price) {
     price:price,
     count:1
   }
+  var pushProduct=true
+for (let i = 0; i < buyProduct.length; i++) {
+  if (title==buyProduct[i].title) {
+    buyProduct[i].count++
+     pushProduct=false
+   }
+}
 
+if (pushProduct) {
 buyProduct.push(one_product)
-console.log(buyProduct);
+  
+}
 
+console.log(buyProduct);
+document.querySelector('.cart__modal__body').innerHTML=''
+document.querySelector('.count1').innerHTML=buyProduct.length
 buyProduct.map((item,key)=>{
   document.querySelector('.cart__modal__body').innerHTML+=`
               <hr>
             <div class="one_product_cart">
                <img class="one_product_img" src="${item.image}" alt="">
                 <div class="one_product_title">${item.title}</div>
-                <div class="one_product_price">${item.price}</div>
+                <div class="one_product_price">${item.price}$</div>
                 <div class="one_product_buttons">
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
+                    <button onclick='minus(${key})'>-</button>
+                    <span>${item.count}</span>
+                    <button onclick='plus(${key})'>+</button>
                 </div>
+                <i onclick='del1(${key})' class='bx bxs-trash'></i>
             </div>
             <hr>
   `
 })
 }
+
+
+function del1(params) {
+  buyProduct.splice(params,1)
+  document.querySelector('.cart__modal__body').innerHTML=''
+document.querySelector('.count1').innerHTML=buyProduct.length
+buyProduct.map((item,key)=>{
+  document.querySelector('.cart__modal__body').innerHTML+=`
+              <hr>
+            <div class="one_product_cart">
+               <img class="one_product_img" src="${item.image}" alt="">
+                <div class="one_product_title">${item.title}</div>
+                <div class="one_product_price">${item.price}$</div>
+                <div class="one_product_buttons">
+                    <button onclick='minus(${key})'>-</button>
+                    <span>${item.count}</span>
+                    <button onclick='plus(${key})'>+</button>
+                </div>
+                <i onclick='del1(${key})' class='bx bxs-trash'></i>
+            </div>
+            <hr>
+  `
+}) 
+}
+
+
+function minus(params) {
+  if ( buyProduct[params].count>1) {
+    buyProduct[params].count--
+ }
+  
+  document.querySelector('.cart__modal__body').innerHTML=''
+  document.querySelector('.count1').innerHTML=buyProduct.length
+  buyProduct.map((item,key)=>{
+    document.querySelector('.cart__modal__body').innerHTML+=`
+                <hr>
+              <div class="one_product_cart">
+                 <img class="one_product_img" src="${item.image}" alt="">
+                  <div class="one_product_title">${item.title}</div>
+                  <div class="one_product_price">${item.price}$</div>
+                  <div class="one_product_buttons">
+                      <button onclick='minus(${key})'>-</button>
+                      <span>${item.count}</span>
+                      <button onclick='plus(${key})'>+</button>
+                  </div>
+                  <i onclick='del1(${key})' class='bx bxs-trash'></i>
+              </div>
+              <hr>
+    `
+  }) 
+}
+
+function plus(params) {
+  buyProduct[params].count++
+  document.querySelector('.cart__modal__body').innerHTML=''
+  document.querySelector('.count1').innerHTML=buyProduct.length
+  buyProduct.map((item,key)=>{
+    document.querySelector('.cart__modal__body').innerHTML+=`
+                <hr>
+              <div class="one_product_cart">
+                 <img class="one_product_img" src="${item.image}" alt="">
+                  <div class="one_product_title">${item.title}</div>
+                  <div class="one_product_price">${item.price}$</div>
+                  <div class="one_product_buttons">
+                      <button onclick='minus(${key})'>-</button>
+                      <span>${item.count}</span>
+                      <button onclick='plus(${key})'>+</button>
+                  </div>
+                  <i onclick='del1(${key})' class='bx bxs-trash'></i>
+              </div>
+              <hr>
+    `
+  }) 
+}
+
