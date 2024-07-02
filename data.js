@@ -151,18 +151,64 @@ data=[
         <div class="catd_product_price">${item.price}</div>
         <div class="catd_product_category">${item.category}</div>
         <div class="catd_product_button">
-            <button>buy</button>
+            <button onclick="buyitem('${item.image}','${item.title}','${item.price}')"> buy</button>
         </div>
     </div>
         </div>
     `
 })
 
-function  search1() {
+function search1() {
+  document.querySelector('.cards_product').innerHTML=""
   var input=document.querySelector('.d-flex input').value
   data.map((item,key)=>{
-if(){
-
+if(item.title.includes(input) || item.category.includes(input)){
+  document.querySelector('.cards_product').innerHTML+=`
+  <div class="card_product">
+  <div class="card_product_img">
+      <img src="${item.image}" alt="">
+  </div>
+  <div class="card_product_body">
+      <div class="catd_product_title">${item.title}</div>
+      <div class="catd_product_price">${item.price}</div>
+      <div class="catd_product_category">${item.category}</div>
+      <div class="catd_product_button">
+          <button onclick="buyitem('${item.image}','${item.title}','${item.price}')">buy</button>
+      </div>
+  </div>
+      </div>
+  `
 }
+})
+}
+
+var buyProduct=[]
+
+function buyitem(img,title,price) {
+  one_product={
+    image:img,
+    title:title,
+    price:price,
+    count:1
+  }
+
+buyProduct.push(one_product)
+console.log(buyProduct);
+
+buyProduct.map((item,key)=>{
+  document.querySelector('.cart__modal__body').innerHTML+=`
+              <hr>
+            <div class="one_product_cart">
+               <img class="one_product_img" src="${item.image}" alt="">
+                <div class="one_product_title">${item.title}</div>
+                <div class="one_product_price">${item.price}</div>
+                <div class="one_product_buttons">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+            </div>
+            <hr>
+  `
 })
 }
