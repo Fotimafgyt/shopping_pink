@@ -43,9 +43,9 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li style="cursor: pointer;" class="nav-item">
                         <a class="nav-link " aria-disabled="true"
-                            onclick="document.querySelector('.cart__modal').style='top:62px;'"><i
+                            onclick="document.querySelector('.cart__modal').style='left:0px;'"><i
                                 style="font-size: 25px;" class='bx bx-cart-alt'></i><sup
                                 style="padding: 0px 4px; background-color: black;color: white;border-radius: 50%;position: relative; top: -13px;left: -5px;">0</sup></a>
                     </li>
@@ -64,7 +64,7 @@
 
 
     <div class="cart__modal">
-        <div class="cart_close" onclick="document.querySelector('.cart__modal').style='top:-100%;'">x</div>
+        <div class="cart_close" onclick="document.querySelector('.cart__modal').style='left:-100%'"><i class='bx bx-x'></i></div>
         <div class="cart__modal__body">
             <div class="one_product_cart">
                 <div class="one_product_cart"></div>

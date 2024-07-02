@@ -34,15 +34,17 @@
     background-color: white;
     height: 100vh;
     position: absolute;
-    top: -100%;
+    top: 0;
     transition: 1s;
-    left: 0px;
+    left: -100%;
 }
 .cart_close{
     position: absolute;
     top: 0px;
     right: 10px;
     font-family: cursive;
+    cursor: pointer;
+    font-size: 20px;
 }
 .catd_product_button{
     display: flex;
@@ -60,4 +62,8 @@
 .catd_product_button button:hover{
     background-color: black;
     color: white;
+}
+.catd_product_price{
+    color: red;
+    font-weight: 700;
 }

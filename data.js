@@ -149,6 +149,7 @@ data=[
     <div class="card_product_body">
         <div class="catd_product_title">${item.title}</div>
         <div class="catd_product_price">${item.price}</div>
+        <div class="catd_product_category">${item.category}</div>
         <div class="catd_product_button">
             <button>buy</button>
         </div>
@@ -158,5 +159,10 @@ data=[
 })
 
 function  search1() {
-  
+  var input=document.querySelector('.d-flex input').value
+  data.map((item,key)=>{
+if(){
+
+}
+})
 }
